@@ -16,4 +16,4 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         <li class="img-info-item">Comments ${X}</li>
         <li class="img-info-item">Downloads ${I}</li>
       </ul>
-    </li>`,"")},G=()=>{q.show({message:"Sorry, there are no images matching your search query. Please try again!",maxWidth:432,iconUrl:"./src/images/error-icon.svg",iconColor:"#FFFFFF",backgroundColor:"#EF4040",messageColor:"#FFFFFF",position:"topRight"})};
+    </li>`,"")},G=()=>{q.show({message:"Sorry, there are no images matching your search query. Please try again!",maxWidth:432,iconUrl:"error-icon.svg",iconColor:"#FFFFFF",backgroundColor:"#EF4040",messageColor:"#FFFFFF",position:"topRight"})};
