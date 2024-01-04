@@ -33,7 +33,7 @@ form.addEventListener('submit', event => {
     });
 
 
-    fetch(`https://pixabay.com/api?${urlParams}`)
+    fetch(`https://pixabay.com/api/?${urlParams}`)
         .then(response => {
 
             if (!response.ok) throw new Error(response.status);
