@@ -9,16 +9,7 @@ const form = document.querySelector("form");
 const imagesContainer = document.querySelector(".images");
 
 
-const gallery = new SimpleLightbox(".images .img", {
-    closeText: `<svg class="close-btn">
-        <use href="./img/close.svg"></use>
-</svg>`,
-    navText: [`<svg class="arrow-btn">
-        <use href="./img/arrow-left.svg"></use>
-</svg>`,
-        `<svg class="arrow-btn">
-        <use href="./img/arrow-right.svg"></use>
-</svg>`],
+let gallery = new SimpleLightbox(".images a", {
     captionsData: 'alt',
     captionDelay: 250
 });
@@ -26,7 +17,10 @@ const gallery = new SimpleLightbox(".images .img", {
 form.addEventListener('submit', event => {
     event.preventDefault();
 
-
+    imagesContainer.innerHTML = `
+    <li>
+        <span class="loader"></span>
+    </li>`
 
     const value = event.target.elements.search.value;
 
@@ -41,6 +35,7 @@ form.addEventListener('submit', event => {
 
     fetch(`https://pixabay.com/api?${urlParams}`)
         .then(response => {
+
             if (!response.ok) throw new Error(response.status);
             return response.json();
         })
@@ -48,38 +43,37 @@ form.addEventListener('submit', event => {
         .catch(showError);
 
     event.target.elements.search.value = '';
-
-    gallery.refresh();
 });
 
 
 
 const innerImages = images => {
+    if (images.hits.length === 0) throw new Error(images.status);
     imagesContainer.innerHTML = images.hits.reduce((html, { largeImageURL, webformatURL, tags, likes, views, comments, downloads }) => html + `
     <li class="img">
        <a href="${largeImageURL}"><img src="${webformatURL}" alt="${tags}"></a>
       <ul class="img-info">
-        <li class="img-info-item">Likes ${likes}</li>
-        <li class="img-info-item">Views ${views}</li>
-        <li class="img-info-item">Comments ${comments}</li>
-        <li class="img-info-item">Downloads ${downloads}</li>
+        <li class="img-info-item"><span>Likes</span> ${likes}</li>
+        <li class="img-info-item"><span>Views</span> ${views}</li>
+        <li class="img-info-item"><span>Comments</span> ${comments}</li>
+        <li class="img-info-item"><span>Downloads</span> ${downloads}</li>
       </ul>
     </li>`, '');
+
+    gallery.refresh();
 }
 
 const showError = () => {
     iziToast.show({
         message: `Sorry, there are no images matching your search query. Please try again!`,
         maxWidth: 432,
-        iconUrl: 'error-icon.svg',
+        iconUrl: './images/error-icon.svg',
         iconColor: '#FFFFFF',
         backgroundColor: '#EF4040',
         messageColor: '#FFFFFF',
         position: 'topRight'
     });
+    imagesContainer.innerHTML = '';
 }
-
-
-
 
 
