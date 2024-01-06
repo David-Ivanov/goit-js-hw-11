@@ -10,5 +10,5 @@ import{S as m,i as u}from"./assets/vendor-46aac873.js";(function(){const i=docum
         <li class="img-info-item"><span>Comments</span> ${l}</li>
         <li class="img-info-item"><span>Downloads</span> ${c}</li>
       </ul>
-    </li>`,""),h.refresh()},g=()=>{u.show({message:"Sorry, there are no images matching your search query. Please try again!",maxWidth:432,iconUrl:"./images/error-icon.svg",iconColor:"#FFFFFF",backgroundColor:"#EF4040",messageColor:"#FFFFFF",position:"topRight"}),a.innerHTML=""};
+    </li>`,""),h.refresh()},g=()=>{u.show({message:"Sorry, there are no images matching your search query. Please try again!",maxWidth:432,iconUrl:"../images/error-icon.svg",iconColor:"#FFFFFF",backgroundColor:"#EF4040",messageColor:"#FFFFFF",position:"topRight"}),a.innerHTML=""};
 //# sourceMappingURL=commonHelpers.js.map
