@@ -67,7 +67,7 @@ const showError = () => {
     iziToast.show({
         message: `Sorry, there are no images matching your search query. Please try again!`,
         maxWidth: 432,
-        iconUrl: './images/error-icon.svg',
+        iconUrl: '../images/error-icon.svg',
         iconColor: '#FFFFFF',
         backgroundColor: '#EF4040',
         messageColor: '#FFFFFF',
